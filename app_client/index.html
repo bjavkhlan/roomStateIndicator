@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="roomStateIndicatorApp">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    </head>
+  <body ng-view>
+    <div ng-controller="homeCtrl as ctrl">
+      <ul>
+        <li ng-repeat="worker in ctrl.data">Ажилчны нэр: <strong>{{worker.name}}</strong> <br>
+          <span ng-repeat="room in worker.room">
+            Өрөө: <strong>{{room.number}}</strong>  
+            Төлөв: <i>{{ctrl.statesAsWord[room.state[room.state.length-1].number]}}</i><br>
+            Төлөвийг өөрчлөх: 
+            <button ng-click="ctrl.postData(worker._id, $index, 0)">{{ctrl.statesAsWord[0]}}</button>
+            <button ng-click="ctrl.postData(worker._id, $index, 1)">{{ctrl.statesAsWord[1]}}</button>
+            <button ng-click="ctrl.postData(worker._id, $index, 2)">{{ctrl.statesAsWord[2]}}</button>
+            <button ng-click="ctrl.postData(worker._id, $index, 3)">{{ctrl.statesAsWord[3]}}</button>
+            <br>
+          </span>
+  
+          
+        </li>
+      </ul>
+    </div>
+  
+    <script src="/lib/angular.min.js"></script>
+    <script src="/app.js"></script>
+   </body>
+</html>
